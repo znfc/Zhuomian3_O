@@ -28,15 +28,9 @@ import com.android.launcher3.LauncherAppWidgetInfo;
 import com.android.launcher3.LauncherSettings;
 import com.android.launcher3.ShortcutInfo;
 import com.android.launcher3.config.ProviderConfig;
-import com.android.launcher3.logging.LoggerUtils;
-import com.android.launcher3.logging.DumpTargetWrapper;
 import com.android.launcher3.shortcuts.DeepShortcutManager;
 import com.android.launcher3.shortcuts.ShortcutInfoCompat;
 import com.android.launcher3.shortcuts.ShortcutKey;
-import com.android.launcher3.model.nano.LauncherDumpProto;
-import com.android.launcher3.model.nano.LauncherDumpProto.ContainerType;
-import com.android.launcher3.model.nano.LauncherDumpProto.DumpTarget;
-import com.android.launcher3.model.nano.LauncherDumpProto.ItemType;
 import com.android.launcher3.util.ComponentKey;
 import com.android.launcher3.util.LongArrayMap;
 import com.android.launcher3.util.MultiHashMap;
@@ -113,7 +107,7 @@ public class BgDataModel {
      public synchronized void dump(String prefix, FileDescriptor fd, PrintWriter writer,
              String[] args) {
         if (args.length > 0 && TextUtils.equals(args[0], "--proto")) {
-            dumpProto(prefix, fd, writer, args);
+//            dumpProto(prefix, fd, writer, args);
             return;
         }
         writer.println(prefix + "Data Model:");
@@ -151,6 +145,7 @@ public class BgDataModel {
         }
     }
 
+    /* remove by zhaopenglin 20171017 start
     private synchronized void dumpProto(String prefix, FileDescriptor fd, PrintWriter writer,
             String[] args) {
 
@@ -232,6 +227,8 @@ public class BgDataModel {
             }
         }
     }
+    remove by zhaopenglin 20171017 end
+*/
 
     public synchronized void removeItem(Context context, ItemInfo... items) {
         removeItem(context, Arrays.asList(items));

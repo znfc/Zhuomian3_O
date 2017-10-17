@@ -32,8 +32,8 @@ android {
 
     productFlavors {
         aosp {
-            applicationId 'com.android.launcher3'
-            testApplicationId 'com.android.launcher3.tests'
+            applicationId 'com.android.launcher3.zm'
+            testApplicationId 'com.android.launcher3.zm.tests'
         }
     }
     sourceSets {
