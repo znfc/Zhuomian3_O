@@ -1,0 +1,78 @@
+diff --git a/AndroidManifest.xml b/AndroidManifest.xml
+index e4e871c..bcb522b 100644
+--- a/AndroidManifest.xml
++++ b/AndroidManifest.xml
+@@ -32,13 +32,13 @@
+     name in the permissions. eq com.mypackage.permission.READ_SETTINGS
+     -->
+     <permission
+-        android:name="com.android.launcher3.ZM.permission.READ_SETTINGS"
++        android:name="com.android.launcher3.permission.READ_SETTINGS"
+         android:permissionGroup="android.permission-group.SYSTEM_TOOLS"
+         android:protectionLevel="normal"
+         android:label="@string/permlab_read_settings"
+         android:description="@string/permdesc_read_settings"/>
+     <permission
+-        android:name="com.android.launcher3.ZM.permission.WRITE_SETTINGS"
++        android:name="com.android.launcher3.permission.WRITE_SETTINGS"
+         android:permissionGroup="android.permission-group.SYSTEM_TOOLS"
+         android:protectionLevel="signatureOrSystem"
+         android:label="@string/permlab_write_settings"
+@@ -46,8 +46,8 @@
+ 
+     <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+     <uses-permission android:name="com.android.launcher.permission.WRITE_SETTINGS" />
+-    <uses-permission android:name="com.android.launcher3.ZM.permission.READ_SETTINGS" />
+-    <uses-permission android:name="com.android.launcher3.ZM.permission.WRITE_SETTINGS" />
++    <uses-permission android:name="com.android.launcher3.permission.READ_SETTINGS" />
++    <uses-permission android:name="com.android.launcher3.permission.WRITE_SETTINGS" />
+ 
+     <application
+         android:backupAgent="com.android.launcher3.LauncherBackupAgent"
+@@ -81,7 +81,6 @@
+                 <action android:name="android.intent.action.MAIN" />
+                 <category android:name="android.intent.category.HOME" />
+                 <category android:name="android.intent.category.DEFAULT" />
+-                <category android:name="android.intent.category.LAUNCHER" />
+                 <category android:name="android.intent.category.MONKEY"/>
+             </intent-filter>
+         </activity>
+@@ -107,10 +106,10 @@
+         -->
+         <provider
+             android:name="com.android.launcher3.LauncherProvider"
+-            android:authorities="com.android.launcher3.zm.settings"
++            android:authorities="com.android.launcher3.settings"
+             android:exported="true"
+-            android:writePermission="com.android.launcher3.zm.permission.WRITE_SETTINGS"
+-            android:readPermission="com.android.launcher3.zm.permission.READ_SETTINGS" />
++            android:writePermission="com.android.launcher3.permission.WRITE_SETTINGS"
++            android:readPermission="com.android.launcher3.permission.READ_SETTINGS" />
+ 
+         <!-- ENABLE_FOR_TESTING
+ 
+diff --git a/build.gradle b/build.gradle
+index 3f5f3bf..9c71693 100644
+--- a/build.gradle
++++ b/build.gradle
+@@ -32,8 +32,8 @@ android {
+ 
+     productFlavors {
+         aosp {
+-            applicationId 'com.android.launcher3.zm'
+-            testApplicationId 'com.android.launcher3.zm.tests'
++            applicationId 'com.android.launcher3'
++            testApplicationId 'com.android.launcher3.tests'
+         }
+     }
+     sourceSets {
+@@ -65,8 +65,7 @@ repositories {
+     jcenter()
+ }
+ 
+-//final String SUPPORT_LIBS_VERSION = '26.0.0-SNAPSHOT'
+-final String SUPPORT_LIBS_VERSION = '26.0.0+'
++final String SUPPORT_LIBS_VERSION = '26.0.0-SNAPSHOT'
+ dependencies {
+     compile "com.android.support:support-v4:${SUPPORT_LIBS_VERSION}"
+     compile "com.android.support:recyclerview-v7:${SUPPORT_LIBS_VERSION}"
